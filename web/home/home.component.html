@@ -1,0 +1,75 @@
+<div class="row" >
+    <div class="jumbotron-tc parallax-window" data-speed="0.5" data-parallax="scroll" data-image-src="assets/img/main.png" style="padding-top: 60vh; padding-bottom: 10vh; background:
+url(assets/img/main.png) no-repeat center center fixed; background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" >
+                    {{selectLang(this.lang)}}
+                    <h2>{{ translatedText[9] }}</h2>
+                    <p>{{ translatedText[10] }}</p>
+                </div>
+                <div class="col-md-2 hidden-sm hidden-xs"></div>
+                <div *ngIf="userBoolean()" class="col-md-4" style="padding-top: 3.5%;" >
+                    <a class="btn btn-default btn-lg btn-block btn-play play-button" (click)="notLoginAlert()" >Play now!</a>
+                </div>
+                <div *ngIf="!userBoolean()" class="col-md-4" style="padding-top: 3.5%;" >
+                    <a class="btn btn-default btn-lg btn-block btn-play play-button" [routerLink]="['/game/chapters']" role="button" >Play now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center news-title">
+        <span>{{ translatedText[11] }}</span>
+    </h2>
+    <div class="row featured">
+        <div class="col-md-7">
+            <img class="img-responsive" src="assets/img/trycodinglogo-beta-banner.png">
+        </div>
+        <div class="col-md-5 newscontent">
+            <h2 style="">{{ translatedText[24] }}</h2>
+            <p style="">{{ translatedText[25] }}</p>
+            <p style="text-align: center;"><a class="btn btn-default" [routerLink]="['/cbt']" role="button" >READ MORE</a></p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row about-game">
+    <div class="col-md-12 about-game-divider">
+        <h3 class="about-game-title">TRYCODING</h3>
+    </div>
+    <div class="container">
+        <div class="col-md-4 col-sm-12 col-xs-12 about-game-image">
+            <img class="img-responsive center-block" src="assets/img/about_code.png">
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 col-xs-12 about-game-info">
+                    <h3>{{ translatedText[12] }}</h3>
+                    <p>{{ translatedText[13] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 about-game-divider"></div>
+    <div class="container">
+        <div class="hidden-md hidden-lg col-sm-12 col-xs-12 about-game-image">
+            <img class="img-responsive center-block" src="assets/img/about_game.png">
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4 hidden-sm hidden-xs"></div>
+                <div class="col-md-8 col-sm-12 col-xs-12 about-game-info">
+                    <h3>{{ translatedText[14] }}</h3>
+                    <p>{{ translatedText[15] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 hidden-sm hidden-xs about-game-image">
+            <img class="img-responsive center-block" src="assets/img/about_game.png">
+        </div>
+    </div>
+</div>

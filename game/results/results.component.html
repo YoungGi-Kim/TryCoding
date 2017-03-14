@@ -1,0 +1,100 @@
+<div class="game-results-bg"></div>
+<div class="row">
+    <div class="container">
+        <div class="game-results col-md-12">
+            <div class="mission" style="position: relative; left: -14px;">
+                <h2>Mission <span class="status positive">Accomplished</span></h2>
+            </div>
+            <div class="rewards col-md-12">
+               <!--  <div class="reward">
+                    <img src="" alt="" style="border-radius: 100%;">
+                    <h3>Badge</h3>
+                </div>-->
+                <div class="reward" *ngIf="this.gameService.chapter==2&&this.gameService.level==5">
+                   <div class="container" style="box-sizing: border-box; position: relative; left: -14px; top: 10px; width: 1000px;">
+                       <div class="col-md-12 col-sm-6 col-xs-12 news-element">
+                   <!-- <img src="" alt="">-->
+                    <h3 style="position: relative; left: 50px; top: 10px;">플레이 해주셔서 감사합니다. 설문 조사에 참여해 주세요.<tr>
+                        <a class="btn btn-default" style="position: relative; left: 340px; top: 20px;" href="https://goo.gl/forms/IPXEfQDFAfL4xN8t1" role="button">참여하기</a>
+                    </h3>
+                    </div>
+                   </div>
+                </div>
+               <!-- <div class="reward">
+                    <img src="" alt="">
+                    <h3>Item</h3>
+                </div>
+            </div>-->
+           <!-- <div class="results-left col-md-6">
+                <div class="objectives col-md-12">
+                    <h3 class="col-md-12">Objectives</h3>
+                    <div class="objective col-md-12">
+                        <div class="objective-image"></div>
+                        <div class="objective-divider"></div>
+                        <div class="objective-description">
+                            <h4 class="positive">Under 10 lines of code</h4>
+                            <p>
+                                Used <span class="positive">10/10</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="objective col-md-12">
+                        <div class="objective-image"></div>
+                        <div class="objective-divider"></div>
+                        <div class="objective-description">
+                            <h4 class="positive">Under 10 lines of code</h4>
+                            <p>
+                                Used <span class="positive">10/10</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="results-right col-md-6">
+                <h3 class="col-md-12">Friends' efficiency</h3>
+                <div class="efficiencies col-md-12">
+                    <div class="efficiency col-md-12">
+                        <div class="name">Bobbie Goede</div>
+                        <div class="efficiency-button attention">ASK</div>
+                        <div class="score ">999999</div>
+                    </div>
+                    <div class="efficiency col-md-12">
+                        <div class="name">Liam Ederzeel</div>
+                        <div class="efficiency-button">Notify</div>
+                        <div class="score">999998</div>
+                    </div>
+                    <div class="efficiency col-md-12">
+                        <div class="name">Paul van Luling</div>
+                        <div class="efficiency-button">Notify</div>
+                        <div class="score ">-100000</div>
+                    </div>
+                </div>
+                <h3 class="col-md-12">Worlds' efficiency</h3>
+                <div class="efficiencies col-md-12">
+                    <div class="efficiency col-md-12">
+                        <div class="name ">Bobbie Goede</div>
+                        <div class="score ">999999</div>
+                    </div>
+                    <div class="efficiency col-md-12">
+                        <div class="name ">Liam Ederzeel</div>
+                        <div class="score ">999998</div>
+                    </div>
+                    <div class="efficiency col-md-12">
+                        <div class="name ">Paul van Luling</div>
+                        <div class="score ">-100000</div>
+                    </div>
+                </div>
+            </div>-->
+            <div class="results-menu col-md-12"style="position: relative; left: -23px;">
+                <div (click)="backToStages()" class="results-button attention">chapters</div>
+                <div (click)="reTrunGame()" class="results-button attention">Retry</div>
+                <div (click)="continue()" *ngIf="maxlevel<15&&gameService.chapter==1" class="results-button">Continue</div>
+                 <div (click)="continue()" *ngIf="maxlevel<26&&gameService.chapter==2" class="results-button">Continue</div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>

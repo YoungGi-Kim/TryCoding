@@ -1,0 +1,133 @@
+
+<div class="loginmodal-container" [class.reveal-login]="openLogin">
+    <div class="loginview" *ngIf="loginview">
+        <h1>Login</h1><br>
+        
+        <form id="loginModalForm" name="loginform" method="POST">
+                <input type="text" name="email" placeholder="Email" [(ngModel)]="email" required>
+                <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+                <!--<input type="hidden" name="userID" value="">-->
+                <input type="submit" class="login loginmodal-submit" value="Login" id="submitButton" (click)="login()">
+        </form>
+               <!-- <input type="submit" class="login loginmodal-submit facebook-button" value="Facebook" id="submitButton" (click)="loginFacebook()">
+                <input type="submit" class="login loginmodal-submit google-button" value="Google+" id="submitButton" (click)="loginGoogle()">-->
+    </div>
+    <div class="signup" *ngIf="!loginview">
+        <h1>Signup</h1><br>
+        <form id="loginModalForm" name="signupform" method="POST">
+            <input type="text" name="username" placeholder="{{ translatedText[1] }}" [(ngModel)]="username" required>
+            <input type="text" name="firstname" placeholder="{{ translatedText[2] }}" [(ngModel)]="firstname" required>
+            <input type="text" name="lastname" placeholder="{{ translatedText[3] }}" [(ngModel)]="lastname" required>
+            <input type="password" name="password" placeholder="{{ translatedText[4] }}" [(ngModel)]="password" required>
+            <input type="password" name="passwordConfirm" placeholder="{{ translatedText[5] }}" [(ngModel)]="passwordConfirm" required>
+            <input type="date" name="birthdate" placeholder="1990-01-01" [(ngModel)]="dateOfBirth" required>
+            <input type="text" name="country" placeholder="{{ translatedText[6] }}" [(ngModel)]="country" required>
+            <input type="text" name="email" placeholder="{{ translatedText[7] }}" [(ngModel)]="email" required>
+            <input type="text" name="referral" placeholder="{{ translatedText[8] }}" [(ngModel)]="referral" required>
+            <input type="submit" class="login loginmodal-submit" value="Signup" id="submitButton" (click)="register()">
+        </form>
+    </div>
+    
+    <div class="login-help">
+        
+        <a href="#" *ngIf="loginview" (click)="toggleLoginView()"><strong>{{ translatedText[0] }}</strong></a><a href="#" *ngIf="!loginview" (click)="toggleLoginView()">{{ translatedText[26] }}</a>
+    </div>
+</div>
+<div class="login-darken" [class.login-darken-opaque]="openLogin" (click)="openLogin = false">
+
+</div>
+
+<nav id="navigation-bar" class="navbar-fixed-top nav-bg">
+    <div class="container">
+        <div class="navbar-header nav">
+        </div>
+        
+        <nav>
+            <ul class="nav navbar-nav">
+                <li><img [routerLink]="['/']" src="assets\img/trycodinglogo-beta-nobg.png" width="162" height="32"></li>
+            </ul>
+        </nav>
+        <nav class="navbar-collapse collapse">
+            <ul class="nav navbar-nav cl-effect-4 hidden-sm hidden-xs">
+                <li><a [routerLink]="['/about']">About</a></li>
+                <li><a [routerLink]="['/news']" >News</a></li>
+                <!-- <li><a href="">Forum</a></li> -->
+            </ul>
+            <div>
+                <ul [hidden]="user.email"class="nav navbar-nav cl-effect-4 navbar-right hidden-sm hidden-xs" style="margin-right: 0px;">
+                    <li> <a (click)="languageConvert()">Language </a></li>
+                    <li *ngIf="languageHidden" position:absolute height=100px> 
+                        <option class="btn" *ngFor="let lang of supportedLanguages" (click)="selectLang(lang.value); languageConvert()" [class.btn-primary]="isCurrentLang(lang.value)" >
+                        {{ lang.display }} </option>
+                    </li>
+                    <li ><a (click)="toggleLogin()">Login</a></li>
+                </ul>
+            </div>
+            <ul [hidden]="!user.email" class="nav navbar-nav navbar-right hidden-sm hidden-xs avatar" style="margin-right: 0px;">
+                <li><img [routerLink]="['/profile']" class="avatar-img" [src]="user.avatar || 'assets/img/user.jpg'"></li>
+            </ul>
+            <ul [hidden]="!user.email" class="nav navbar-nav navbar-right hidden-sm hidden-xs" style="margin-right: 0px;">
+                <li> <a (click)="languageConvert()">Language </a></li>
+                    <li *ngIf="languageHidden" position:absolute height=100px> 
+                        <option class="btn" *ngFor="let lang of supportedLanguages" (click)="selectLang(lang.value); languageConvert()" [class.btn-primary]="isCurrentLang(lang.value)" >
+                        {{ lang.display }} </option>
+                    </li>
+                <li><a [routerLink]="['/profile']" href="#">{{ user.email }}</a></li>
+            </ul>
+
+			<!-- <img [src]="user.photo()"> -->
+        </nav>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<nav class="nav-bg">
+    <div class="container footer">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="navbar-header nav">
+                <nav>
+                    <ul class="nav navbar-nav">
+                        <li><a [routerLink]="['/']">TryCoding</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <nav class="navbar-collapse collapse">
+                <ul class="nav navbar-nav cl-effect-4 hidden-sm hidden-xs">
+                    <li><a [routerLink]="['/about']">ABOUT</a></li>
+                    <li><a [routerLink]="['/news']" >News</a></li>
+                   <!-- <li><a href="">Forum</a></li>-->
+                </ul>
+            </nav>
+        </div>
+
+      <!--  <div class="col-md-4 col-sm-4 col-xs-4 social-media" >
+            <div class="">
+                <a href=""  class="button" style="margin: 0px;">
+                    <div class="social "><span class="fa fa-twitter"></span></div>
+                </a>
+                <a href=""  class="button" style="margin: 0px;">
+                    <div class="social "><span class="fa fa-facebook"></span></div>
+                </a>
+                <a href=""  class="button" style="margin: 0px;">
+                    <div class="social "><span class="fa fa-google-plus"></span></div>
+                </a>
+                <a href=""  class="button" style="margin: 0px;">
+                    <div class="social "><span class="fa fa-youtube"></span></div>
+                </a>
+            </div>
+        </div>-->
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <h5>© Copyright 2017 by TryCatch Media, Inc. All Rights Reserved.</h5>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4" style="text-align: right;">
+            <div class="button"  style="width: 100%;">
+                <a href="#" class="scrollup button" style="display: inline-block;">
+                    <div class="btn-top">
+                        Back to top
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

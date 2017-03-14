@@ -1,0 +1,46 @@
+
+<div class="row news-banner" style="background-image: url('assets/img/about-backdrop.png');">
+    <!-- <div id="background" style="position:absolute; top:0; left:0; right:0; bottom:0; filter: z-index:-1; background-image: url('assets/img/news1.png'); background-size: cover; filter: blur(10px);"></div> -->
+    <!-- <div class="container" style="box-sizing: border-box;"> -->
+       
+
+    <!-- </div> -->
+</div>
+<div class="row">
+    <div class="container" style="box-sizing: border-box;">
+        <h2 class="text-center news-title">
+            {{selectLang(this.lang)}}
+            <span>{{ translatedText[12] }}</span>
+        </h2>
+        <div class="col-md-12 col-sm-6 col-xs-12 news-element">
+            <div class="col-md-3 col-sm-12 col-xs-12 news-element-img">
+                <img class="img-responsive col-md-12" [routerLink]="['/cbt']" role="button" src="assets/img/trycodinglogo-beta-banner.png">
+            </div>
+            <div class="col-md-9 hidden-sm hidden-xs news-element-description" [routerLink]="['/cbt']" role="button">
+                <h5>2017.02.27</h5>
+                <h2>{{ translatedText[24] }}</h2>
+                <p>{{ translatedText[25] }}</p>
+            </div>
+        </div>
+       <!-- <div class="col-md-12 col-sm-6 col-xs-12 news-element">
+            <div class="col-md-3 col-sm-12 col-xs-12 news-element-img">
+                <img class="img-responsive col-md-12" src="assets/img/news2.png">
+            </div>
+            <div class="col-md-9 hidden-sm hidden-xs news-element-description">
+                <h5>AUG 10 2016</h5>
+                <h2>Chapter 3 Swamplands</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit sapien ipsum, at fringilla metus accumsan sed. Proin eget est sit amet massa sollicitudin feugiat.</p>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-6 col-xs-12 news-element">
+            <div class="col-md-3 col-sm-12 col-xs-12 news-element-img">
+                <img class="img-responsive col-md-12" src="assets/img/news3.png">
+            </div>
+            <div class="col-md-9 hidden-sm hidden-xs news-element-description">
+                <h5>AUG 10 2016</h5>
+                <h2>Chapter 3 Swamplands</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit sapien ipsum, at fringilla metus accumsan sed. Proin eget est sit amet massa sollicitudin feugiat. Suspendisse ultricies erat lorem, at maximus mi maximus nec. Vivamus in nisl odio. Suspendisse eget congue elit. Donec magna arcu, maximus et pellentesque quis, vehicula dictum ligula. Nunc bibendum quam sed ligula accumsan porta. Duis elit sapien, eleifend nec auctor a, pretium non tortor. Sed suscipit sapien ipsum, at fringilla metus accumsan sed. Proin eget est sit amet massa sollicitudin feugiat. Suspendisse ultricies erat lorem, at maximus mi maximus nec. Vivamus in nisl odio. Suspendisse eget congue elit. </p>
+            </div>
+        </div>-->
+    </div>
+</div>

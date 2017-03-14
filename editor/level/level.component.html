@@ -1,0 +1,84 @@
+<div id=content style="height: 100%;">
+	<div id=game style="float:left; width:61.8%; height: 100%; display: inline-block;">
+		<div class="editor-menu" style="z-index: 100; height: calc( 100% - 60px); box-sizing: border-box;">
+			<!-- <div id="color" style="width:200px;height:50px;float:left"></div> -->
+			<button class="editor-button" (click)="increase()"><img src="/assets/img/editor/zoom-in.svg"></button>
+			<button class="editor-button" (click)="decrease()"><img src="/assets/img/editor/zoom-out.svg"></button>
+			<!-- <button (click)="setGameplay()">Gameplay overlay</button> -->
+			<button class="editor-button" (click)="setEraser()"><img src="/assets/img/editor/delete.svg"></button>
+			<!-- <button (click)="setType()">Switch layer</button> -->
+			<button class="editor-button" (click)="undoLast()"><img src="/assets/img/editor/undo.svg"></button>
+			<button class="editor-button"(click)="back()"><img src="/assets/img/editor/undo.svg"></button>
+			<button class="editor-button"(click)="save()"><img src="/assets/img/editor/save.svg"></button>
+
+		</div>
+		<div class="debug" style="position: absolute; top: 60px; left: 0;">{{ "x: " + mouse.screenPosition.x }} <br> {{ "y: " + mouse.screenPosition.y }}</div>
+		<canvas id="layer" width="500" height="500" style="position:absolute; left:0px; top: 60px; z-index: 0; cursor: pointer;"></canvas>
+	</div>
+	<div  id="menu" style="">
+		<div id="options">
+			<div>
+			</div>
+			<div>
+				<button class="editor-tab" (click)="setLayerType(1)" [class.active-tab]="(layerType == 0 || layerType == 1) && !informationTab && !enemytab">Assets</button>
+				<!-- <button class="editor-tab" (click)="setLayerType(0)" [class.active-tab]="layerType == 1 && !informationTab">Props</button> -->
+				<button class="editor-tab" (click)="setLayerType(2)" [class.active-tab]="layerType == 2 && !informationTab && !enemytab">Gameplay</button>
+				<button class="editor-tab" (click)="informationTab = true; enemytab = false" [class.active-tab]="informationTab && !enemytab">Information</button>
+				<button class="editor-tab" (click)="enemytab = true; informationTab = false" [class.active-tab] = "enemytab && !informationTab">Enemy</button>
+			</div>
+		</div>
+		<div id="catalog">
+			<div class="active-type" [hidden]="layerType != 0 || informationTab || enemytab">
+				<ul  id="tiles" style="margin: 0; padding: 0;">
+					<li  style="width: 120px;" class="catalog-item" (click)="selectItem(tile.id)" *ngFor="let tile of images[0]" [ngStyle]="{'background-image': 'url(' + assetPath + tile.file + ')'}"></li>
+				</ul>
+			</div>
+
+			<div class="active-type" [hidden]="layerType != 1 || informationTab || enemytab">
+				<ul  id="props" style="margin: 0; padding: 0;">
+					<li class="catalog-item" (click)="selectItem(prop.id)" *ngFor="let prop of images[1]" [ngStyle]="{'background-image': 'url(' + assetPath + prop.file + ')'}"></li>
+				</ul>
+			</div>
+
+			<div class="active-type" [hidden]="layerType != 2 || informationTab || enemytab">
+				<ul  id="props" style="margin: 0; padding: 0;">
+					<li class="catalog-item" (click)="selectItem(i)" *ngFor="let type of gameObjectTypeKeys(); let i = index" [ngStyle]="{'background-color': getColor(i)}">{{ type }}</li>
+				</ul>
+			</div>
+
+			<div class="active-type" [hidden]="!informationTab">
+				<ul  id="props" style="margin: 0; padding: 0;">
+					<li><p>Level title: </p><input type="text" [(ngModel)]="level.title" >
+						<p>Level description: </p><textarea [(ngModel)]="level.description" name="name" rows="8" cols="80"></textarea>
+						<p>Level solution: </p><textarea [(ngModel)]="level.levelData.solution" name="name" rows="8" cols="80"></textarea>
+						<p>Editor prefill: </p><textarea [(ngModel)]="level.levelData.prefill" name="name" rows="8" cols="80"></textarea></li>
+				</ul>
+			</div>
+
+			<div class="active-type" [hidden]="!enemytab">
+				<ul id="props" style="margin: 0; padding: 0;">
+					<li class="catalog-item" (click)="selectItem(i)" *ngFor="let type of gameObjectTypeKeys(); let i = index" [ngStyle]="{'background-color': getColor(i)}">{{ type }}</li>
+				</ul>
+			</div>
+			
+
+		</div>
+		<div class="editor-divider">
+			<button class="editor-tab active-tab">Layers</button>
+		</div>
+		<div class="layers">
+			<!-- <span>Layers</span> -->
+			<ul>
+				<li><input type="checkbox" class="layer-tick" [checked]="gameplayLayer" (change)="gameplayLayer=$event.target.checked ? true : false">  Gameplay</li>
+				<li ><div (click)="propLayers = !propLayers" style="cursor: pointer;" [class.dropup]="propLayers" [class.dropdown]="!propLayers"></div><span style="margin-left: 20px;">Props</span><div (click)="addLayer(1)" class="layer-remove"><img src="/assets/img/editor/add.svg" alt=""></div></li>
+				<ul *ngIf="propLayers">
+					<li [class.selected]="layer == selectedLayer" (click)="selectLayer(layer)" [hidden]="layer.layerType != 1" *ngFor="let layer of level.levelData.art; let i = index"><input type="checkbox" class="layer-tick" [checked]="layer.active" (change)="layer.active=$event.target.checked ? true : false"><div style="display: inline-block;" (click)="renameLayer(layer)">{{ layer.name }}</div><div (click)="deleteLayer(i)" class="layer-remove"><img src="/assets/img/editor/delete.svg" alt=""></div></li>
+				</ul>
+				<li><div  (click)="tileLayers = !tileLayers" style="cursor: pointer;" [class.dropup]="tileLayers" [class.dropdown]="!tileLayers" ></div><span style="margin-left: 20px;">Tiles</span><div (click)="addLayer(0)" class="layer-remove"><img src="/assets/img/editor/add.svg" alt=""></div></li>
+				<ul *ngIf="tileLayers">
+					<li [class.selected]="layer == selectedLayer" (click)="selectLayer(layer)" [hidden]="layer.layerType != 0" *ngFor="let layer of level.levelData.art; let i = index"><input type="checkbox" class="layer-tick" [checked]="layer.active" (change)="layer.active=$event.target.checked ? true : false"><div style="display: inline-block;" (click)="renameLayer(layer)">{{ layer.name }}</div><div (click)="deleteLayer(i)" class="layer-remove"><img src="/assets/img/editor/delete.svg" alt=""></div></li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+</div>

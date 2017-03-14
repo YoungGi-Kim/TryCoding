@@ -1,0 +1,48 @@
+<style>
+.save {
+	height: 32px;
+	width: 32px;
+	border-radius: 4px;
+	background-color:#323232;
+	border: none 0;
+	padding: 4px;
+	margin-right: 6px;
+}
+.save img {
+	vertical-align: middle;
+	transform:scale(0.8);
+}
+</style>
+<div class="chapter-editor container">
+	<button  class="editor-button save"(click)="save()"><img src="/assets/img/editor/save.svg"></button>
+	<button  class="editor-button save"(click)="newChapter()"><img src="/assets/img/editor/add.svg"></button>
+	<div class="chapter" *ngFor="let chapter of chapters; let i = index">
+	<div class="active-type title" (click)="chapterOpen[i] = !chapterOpen[i]" style="cursor: pointer;">
+		<div style="display: inline-block;" (click)="rename(chapter)"><h4>{{ chapter.title }}</h4></div>
+		<div (click)="moveChapter(1, chapter)" style="cursor: pointer;" class="dropdown chapter-button"></div>
+		<div (click)="moveChapter(-1, chapter)" style="cursor: pointer;" class="dropup chapter-button"></div>
+		<div class="filler"></div>
+		<div (click)="deleteChapter(chapter)" class="layer-remove chapter-button"><img src="/assets/img/editor/delete.svg" alt=""></div>
+
+	</div>
+	<div *ngIf="chapterOpen[i]" class="contents">
+		<div class="description">
+			<textarea [(ngModel)]="chapter.description" name="name" rows="8" cols="80"></textarea>
+		</div>
+		<div class="list">
+			<ol>
+				<li *ngFor="let level of chapter.levels" class="level-item">
+					<a [routerLink]="['/editor/chapter', chapter.id, 'level', level.id]">{{ level.title }}</a>
+					<div (click)="moveLevel(1, chapter, level)" style="cursor: pointer;" class="dropdown"></div>
+					<div (click)="moveLevel(-1, chapter, level)" style="cursor: pointer;" class="dropup"></div>
+
+					<div (click)="deleteLevel(chapter, level)" class="layer-remove"><img src="/assets/img/editor/delete.svg" alt=""></div>
+
+
+				</li>
+			</ol>
+			<button  class="editor-button save"(click)="newLevel(chapter)"><img src="/assets/img/editor/add.svg"></button>
+		</div>
+	</div>
+	</div>
+</div>

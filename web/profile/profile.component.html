@@ -1,0 +1,56 @@
+
+
+<div class="profile-background" style="background-image: url('assets/img/about-backdrop.jpg'); background-size: cover;">
+    <div class="about-gradient"></div>
+</div>
+
+<div class="container profile" >
+    <div class="details">
+        <div class="signout">
+			<img class="avatar" [src]="user.avatar || 'assets/img/user.jpg'" alt="">
+            <div (click)="logout()" class="signout-button">Signout</div>
+        </div>
+        <div class="meta">
+            <div class="element">{{ user.email }}</div>
+            <div class="element">{{ user.firstname + " " + user.lastname }}</div>
+            <div class="element">{{ user.country }}</div>
+        </div>
+      <!--  <div class="counters">
+           <div class="element"><div class="title">Achievements</div><div class="counter">99</div></div>
+           <div class="element"><div class="title">Friends</div><div class="counter">99</div></div>
+        </div>-->
+    </div>
+    <h3>Achievements</h3>
+   
+    <div class="achievements">
+        <div class="element"><span>Chapter 1</span><div class="achievement-progress"><div class="progress-filler" style="width: 100%"><span class="amount">{{curstageClan}}/10</span></div></div><span>100%</span></div>
+        <div class="element"><span>Chapter 2</span><div class="achievement-progress"><div class="progress-filler" style="width: 33%;"><span class="amount"></span></div></div><span>33%</span></div>
+       
+    </div>
+    <h3>Badges</h3>
+   <div class="badges">
+      <!--  <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>
+        <div class="element"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Color-blue.JPG" alt=""><span>Badge name</span></div>-->
+        <h1>Coming Soon</h1>
+    </div>
+    <h3>Friends</h3>
+  <div class="friends">
+       <!-- <div class="element"><div class="avatar"><img src="https://secure.gravatar.com/avatar/3b7f00d171bde8ed26857fe36a5ab5b1?s=128"></div><div class="name">Fynxx</div><div class="email">username@gmail.com</div><div class="achievements">10</div><div class="status">Online</div></div>
+        <div class="element"><div class="avatar"><img src="https://secure.gravatar.com/avatar/3b7f00d171bde8ed26857fe36a5ab5b1?s=128"></div><div class="name">Grievous</div><div class="email">username@gmail.com</div><div class="achievements">10</div><div class="status">Online</div></div>
+        <div class="element"><div class="avatar"><img src="https://secure.gravatar.com/avatar/3b7f00d171bde8ed26857fe36a5ab5b1?s=128"></div><div class="name">Belastingdienst</div><div class="email">username@gmail.com</div><div class="achievements">10</div><div class="status">Online</div></div>
+        -->
+        
+           <div class="element"><div class="avatar"></div><div class="name">Coming Soon</div></div>
+        
+            <div class="friends-buttons">
+            <div class="friends-button">친구추가</div>
+            <div class="friends-button">추천</div>
+            
+        </div> 
+    </div>
+</div>

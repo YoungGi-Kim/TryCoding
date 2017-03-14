@@ -1,0 +1,31 @@
+export const LANG_KR_NAME = 'kr';
+
+export const LANG_KR_TRANS = {
+    'register' : '회원가입',
+    'Username' : '닉네임',
+    'Firstname' : '이름',
+    'Lastname' : '성',
+    'Password' : '비밀번호',
+    'PasswordConfirm' : '비밀번호 확인',
+    'Country' : '나라',
+    'Email' : '이메일',
+    'Referral' : '추천인',
+    'title' : '코드로 세계를 구하라',
+    'titledetail' : '외계인들에게 공격받는 지구를 구할 수 있는 것은 여러분의 코드와 로직 뿐입니다!',
+    'latestnews' : 'LATEST NEWS',
+    'realcode' : '실제 코드',
+    'realcodedetail' : 'TryCoding은 JavaScript 같은 실제 프로그래밍 언어를 사용해 플레이어들에게 프로그래밍의 기초 중의 기초부터 가르칩니다.',
+    'funenvironment' : '재미있는 배경',
+    'funenvironmentdetail' : 'TryCoding은 플레이어들을 사로잡는 재미있고 미스터리한 세계를 배경으로 합니다.',
+    'welcomeTrycoding' : 'TRYCODING에 오신 것을 환영합니다.',
+    'welcomdetail' : '여러분의 요원들을 프로그래밍하고 외계인들의 습격을 막으세요!',
+    'suvive' : '생존을 하십시오',
+    'suvivedetail' : '외계인들이 지구에 잠입해 인류에게 위협을 가하고 있으며, 이를 막기 위한 특수 기관이 창설되었습니다. 여러분의 요원을 이끌고 이 위협을 영원히 끝내세요.',
+    'chrPro' : '요원들 프로그래밍하기',
+    'chrProdetail' : 'TryCoding에서 여러분은 외계인들을 물리치기 위해 싸우는 요원들 중 하나를 컨트롤하게 됩니다. 여러분의 요원들은 프로그래밍 언어로 쓰인 명확한 명령만을 이행하도록 훈련되었습니다.',
+    'hope' : '인류의 희망',
+    'hopedetail' : '이 요원들이야 말로 외계인들에 대항해 힘의 균형을 깨뜨릴 유일한 희망입니다.',
+    'offerjoin' : '설문조사에 참여해주세요',
+    'offerjoindetail' : '게임을 플레이 하신 후 느낀 점을 설문조사에 적어주세요. 여러분의 소중한 의견 하나가 개발자에게 큰 힘이 됩니다. 많은 참여 부탁드립니다.',
+    'login' : '로그인'
+};

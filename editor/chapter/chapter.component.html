@@ -1,0 +1,16 @@
+<div class="active-type" >
+	<div (click)="chapterOpen = !chapterOpen" style="cursor: pointer;" [class.dropup]="chapterOpen" [class.dropdown]="!chapterOpen"></div>
+	<h4>{{ chapter.title }}</h4>
+	<div [hidden]="!chapterOpen">
+		<p>Level description: </p><textarea [(ngModel)]="chapter.description" name="name" rows="8" cols="80"></textarea>
+		<div>
+			<ol>
+				<li *ngFor="let level of chapter.levels">
+					<a [routerLink]="['/editor/chapter', chapter.id, 'level', level.id]">{{ level.title }}</a>
+					<div (click)="moveLevel(1, level)" style="cursor: pointer;" class="dropdown"></div>
+					<div (click)="moveLevel(-1, level)" style="cursor: pointer;" class="dropup"></div>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>

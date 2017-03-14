@@ -1,0 +1,10 @@
+<div class="asset-manager container">
+    <div *ngFor="let type of assetCount">
+        <div>{{ type.count }}</div>
+        <div>{{ type.name }}</div>
+    </div>
+
+    <input type="file" accept="text/json" (change)="openFile($event)" >
+    <input type="submit" (click)="updateAssets()" [disabled]="!inputEmpty()">
+    <p>{{ preview }}</p>
+</div>

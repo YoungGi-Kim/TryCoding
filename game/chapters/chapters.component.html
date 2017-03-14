@@ -1,0 +1,29 @@
+<ul mouseWheel (mouseWheelUp)="mouseWheelUpFunc($event)" (mouseWheelDown)="mouseWheelDownFunc($event)" class="chapters">
+
+    <!-- <li *ngFor="let chapter of chapters" (click)="selectChapter(1)">
+            <a (click)="selectChapter(1)"> -->
+    <li *ngFor="let chapter of chapters" (click)="selectChapter(chapter.id)">
+        <div class="chapter-wrapper">
+        <div class="chapter-spacer"></div>
+            <div class="chapter-info">
+                <div class="chapter-meta">
+                    <div class="id">
+                        {{ chapter.id }}
+                    </div>
+                    <div class="percentageText" >
+                        <b >55%</b> Complete
+                    </div>
+                    <div class="percentageBar"></div>
+                    <div class="title">
+                        {{ chapter.title }}
+                    </div>
+                </div>
+               <!-- <div class="chapter-description">
+                    <p>
+                        {{ chapter.description }}
+                    </p>
+                </div>-->
+            </div>
+        </div>
+    </li>
+</ul>

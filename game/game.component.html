@@ -1,0 +1,54 @@
+<div class="game-menu">
+    <div class="profile-nav">
+        <div class="profile-level">
+            1
+        </div>
+        <div class="profile-name">
+             {{name}}
+        </div>
+        <!-- <div class="button-divider"></div> -->
+        <div *ngIf="gameService.state == 0 || gameService.state == 1" class="button">
+            <img src="/assets/img/weapon.svg">
+        </div>
+        
+    </div>
+    <div class="nav-location" >
+     <span *ngIf="gameService.state == 0"> Chapter select</span>
+     <span *ngIf="gameService.chapter == 1&&gameService.state != 0"> Chapter 1</span>
+      <span *ngIf="gameService.chapter == 2&&gameService.state != 0"> Chapter 2</span>
+    </div>
+    <div class="right">
+        <div [routerLink]="['/game/chapters']" *ngIf="gameService.state == 1" class="button">
+            <img src="/assets/img/nav/back_32px.svg">
+        </div>
+        <div (click)="backToStages()"  *ngIf="gameService.state == 2" class="button">
+            <img src="/assets/img/nav/back_32px.svg">
+        </div>
+         <div [routerLink]="['/']"  *ngIf="gameService.state == 0" class="button">
+            <img src="/assets/img/nav/back_32px.svg">
+        </div>
+
+        <!-- <div *ngIf="gameService.state == 1 || gameService.state == 2" class="button-divider"></div> -->
+        <div *ngIf="gameService.state == 0 || gameService.state == 1" class="button">
+            <!-- achievements --><img src="/assets/img/nav/achievements_32px.svg">
+        </div>
+        <!-- <div *ngIf="gameService.state == 0 || gameService.state == 1" class="button-divider"></div> -->
+        <div *ngIf="gameService.state == 0 || gameService.state == 1 || gameService.state == 3" class="button">
+            <img src="/assets/img/nav/leaderboards_32px.svg">
+        </div>
+        <!-- <div *ngIf="gameService.state == 0 || gameService.state == 1" class="button-divider"></div> -->
+        <div *ngIf="gameService.state == 2" class="button">
+            <!-- Restart --><img src="/assets/img/nav/reset_32px.svg">
+        </div>
+        <!-- <div *ngIf="gameService.state == 2" class="button-divider"></div> -->
+        <div *ngIf="gameService.state == 2" class="button">
+            <!-- Hints --><img src="/assets/img/nav/help_32px.svg">
+        </div>
+        <div class="button">
+            <img src="/assets/img/nav/mute_32px.svg">
+        </div>
+    </div>
+</div>
+<div style="width:100%; height: calc(100% - 64px)">
+    <router-outlet></router-outlet>
+</div>
